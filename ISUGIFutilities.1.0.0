@@ -10,7 +10,6 @@ export SPACK_ROOT
 export PATH=$SPACK_ROOT/bin:$PATH
 source /etc/profile.d/modules.sh
 source $SPACK_ROOT/share/spack/setup-env.sh
-# module load busco-3.0.1-gcc-4.8.5-cafwtkz
 export PATH=$SPACK_ROOT/isugif/utilities/utilities/:$PATH
 
 %post
@@ -39,6 +38,7 @@ if [ ! -d "$SPACK_ROOT" ]; then
 
   source $SPACK_ROOT/share/spack/setup-env.sh
 fi
+
 
 # export BUSCODIR=$SPACK_ROOT/opt/spack/linux-centos7-x86_64/gcc-4.8.5/busco-3.0.1-cafwtkz5ryvlwnup3xzntotjwlrqsiui
 # cp $BUSCODIR/config/config.ini.default $BUSCODIR/config/config.ini
