@@ -1,5 +1,6 @@
 # Bioinformatic scripts that we commonly use
 
+
 nb = notebook to add text to a notebook but not the readme file
 readme = readme will create a README file in the folder and put the date and text into this file along with a copy in the notebook
 createhist.awk = function that will take a binsize argument and a list of numbers and return a count of numbers within increments of binsize
