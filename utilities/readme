@@ -1,0 +1,42 @@
+#!/bin/bash 
+
+HISTORY="$HOME/.bash_eternal_history"
+NOTNEWETRY=
+
+DATE=$(date "+%m/%d/%y %k:%M:%S")
+LASTDATE=$(tail -n 1 README | cut -f 1)
+LASTCOMMAND=$(tail $HISTORY | tail -n 1)
+#echo $LASTCOMMAND
+#($(eval $LASTCOMMAND)) 
+
+PWD=$(pwd)
+COMMENT=$1
+
+OPTIONS="n:"
+NUMARGS=$#
+if [ $NUMARGS -eq 1 ]; then
+		echo -e "$DATE\t$PWD\t$COMMENT" >> README
+		echo -e "$DATE\t$PWD\t$COMMENT" >> ~/notebook.txt                
+fi
+
+if [ $NUMARGS -eq 0  ]; then
+                echo -e "$LASTDATE\t$PWD\t$LASTCOMMAND" >> README
+		echo -e "$LASTDATE\t$PWD\t$LASTCOMMAND" >> ~/notebook.txt
+		while read line
+		do
+			echo -e "$LASTDATE\t$PWD\t$line" >> README
+			echo -e "$LASTDATE\t$PWD\t$line" >> ~/notebook.txt	
+		done < "${1:-/dev/stdin}"
+fi
+
+
+while getopts $OPTIONS option
+	do
+		case $option in
+		n)
+		NOTNEWENTRY=$OPTARG
+		echo -e "$LASTDATE\t$PWD\t$NOTNEWENTRY" >> README
+		;;
+		esac
+	done
+

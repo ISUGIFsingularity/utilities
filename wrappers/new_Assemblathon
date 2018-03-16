@@ -1,0 +1,3 @@
+#!/bin/bash
+
+singularity exec test.simg new_Assemblathon.pl
