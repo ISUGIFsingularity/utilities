@@ -46,7 +46,7 @@ fi
 cd $SPACK_ROOT
 mkdir isugif
 cd isugif
-git clone https://github.com/ISUgenomics/utilities.git
+git clone https://github.com/ISUGIFsingularity/utilities.git
 ls utilities/utilities/
 
 %runscript
