@@ -7,3 +7,10 @@ createhist.awk = function that will take a binsize argument and a list of number
 new_Assemblathon.pl = script that will create summary statistics from a fasta file usually used for genome assemblies (see Assemblathon2 paper)
 seqlen.awk = script that will take a fasta file and report the ID and the length of the sequence. 
 colsum = used to sum the Nth colum of a file. 
+
+You can pull the singularity image using this command
+
+```
+singularity pull shub://ISUGIFsingularity/utilities:utilities.1.0.0
+
+```
