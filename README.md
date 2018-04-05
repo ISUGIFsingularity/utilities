@@ -11,6 +11,6 @@ colsum = used to sum the Nth colum of a file.
 You can pull the singularity image using this command
 
 ```
-singularity pull shub://ISUGIFsingularity/utilities:utilities.1.0.0
+singularity pull shub://ISUGIFsingularity/utilities:utilities.1.0.1
 
 ```
