@@ -1,4 +1,4 @@
-#!/bin/perl
+#!/opt/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/perl-5.24.1-oucoesziwn5edxkbchvv32y3rcpyqjal/bin/perl
 
 package FAlite;
 use strict;
