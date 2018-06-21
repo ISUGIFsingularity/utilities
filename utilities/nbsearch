@@ -1,4 +1,4 @@
-#!/bin/csh -f
+#!/bin/bash -f
 
 #a notebook search function that highlights regular expression based on grep color command
 

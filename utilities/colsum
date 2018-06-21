@@ -1,4 +1,4 @@
-#!/bin/csh
+#!/bin/bash
 
 #this works even in pipes so all you have to supply is | sum columnnumber2sum
 awk '{ sum+=$"'$1'"} END {print sum, "'$2'"}' $2
