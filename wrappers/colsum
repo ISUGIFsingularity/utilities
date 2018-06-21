@@ -1,3 +1,3 @@
 #!/bin/bash
 
- singularity exec --bind $PWD $UTILTIIESgit/SIMG/ISUGIFsingularity-utilities-master.simg ../utilities/colsum
+ singularity exec --bind $PWD $UTILTIIESgit/SIMG/ISUGIFsingularity-utilities-master.simg $UTILTIIESgit/utilities/colsum
