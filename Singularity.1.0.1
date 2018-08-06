@@ -3,7 +3,7 @@ From:ResearchIT/spack-singularity:openmpi
 
 %labels
 MAINTAINER severin@iastate.edu
-APPLICATION utililities
+APPLICATION utilities
 
 %help
 This container contains all the necessary programs to create genome modules.
@@ -16,7 +16,7 @@ export SPACK_ROOT
 export PATH=$SPACK_ROOT/bin:$PATH
 source /etc/profile.d/modules.sh
 source $SPACK_ROOT/share/spack/setup-env.sh
-export PATH=$SPACK_ROOT/isugif/utilities/utilities/:$PATH
+# export PATH=$SPACK_ROOT/isugif/utilities/utilities/:$PATH
 module load python
 module load perl
 module load perl-bio-perl
@@ -30,7 +30,7 @@ export PATH=$SPACK_ROOT/bin:$PATH
 yum -y install bc paste
 yum clean all
 
-export FORCE_UNSAFE_CONFIGURE=1 
+export FORCE_UNSAFE_CONFIGURE=1
 
 source $SPACK_ROOT/share/spack/setup-env.sh
 spack install python
@@ -42,12 +42,10 @@ export PATH=$SPACK_ROOT/isugif/utilities/utilities:$SPACK_ROOT/isugif/utilities/
 #for d in /opt/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/*/bin; do export PATH="$PATH:$d"; done
 
 cd $SPACK_ROOT
-rm -rf isugif
-mkdir isugif
-cd isugif
-git clone https://github.com/ISUGIFsingularity/utilities.git
-ls utilities/utilities/
+# rm -rf isugif
+# mkdir isugif
+# cd isugif
+# ls utilities/utilities/
 
 %runscript
 ls $SPACK_ROOT/isugif/utilities/utilities/
-
