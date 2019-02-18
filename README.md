@@ -22,8 +22,7 @@ You can pull the singularity image using this command
 cd $UTILITIESgit
 mkdir SIMG
 cd SIMG
-singularity pull shub://ISUGIFsingularity/utilities:utilities.1.0.1
-
+singularity pull shub://ISUGIFsingularity/utilities:1.0.1
 ```
 
 ### Add Alias and PATH
