@@ -13,18 +13,24 @@ This Singularity container is primarily for testing out how containers function.
 **colsum** = used to sum the Nth colum of a file.
 **summary** = give summary statistics of a column of numbers
 
+### Clone this repository
+
+```
+mkdir isugif
+cd isugif
+git clone git@github.com:ISUGIFsingularity/utilities.git
+```
 
 ### Place singularity container into SIMG folder inside this repo
 
 You can pull the singularity image using these commands
 
 ```
-alias UTILITIESgit=Path2thisRepo
-cd $UTILITIESgit
+cd utilities
 mkdir SIMG
 cd SIMG
 singularity pull shub://ISUGIFsingularity/utilities:1.0.1
-ln -s ISUGIFsingularity-utilities-master-1.0.1.simg  ISUGIFsingularity-utilities-master.simg
+ln -s utilities_1.0.1.sif  ISUGIFsingularity-utilities-master.simg
 ```
 
 ### Add Alias and PATH
@@ -33,14 +39,14 @@ Place the following into your .bashrc folder for container use
 
 ```
 alias UTILITIESgit=Path2thisRepo
-export PATH=$PATH:$UTILITIESgit/utilities
+export PATH=$PATH:$UTILITIESgit/wrappers
 ```
 
 Place the following into your .bashrc folder to use scripts without container (preferred method unless testing container functions)
 
 ```
 alias UTILITIESgit=Path2thisRepo
-export PATH=$PATH:$UTILITIESgit/wrappers
+export PATH=$PATH:$UTILITIESgit/utilities
 ```
 
 
