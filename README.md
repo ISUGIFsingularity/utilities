@@ -16,13 +16,15 @@ This Singularity container is primarily for testing out how containers function.
 
 ### Place singularity container into SIMG folder inside this repo
 
-You can pull the singularity image using this command
+You can pull the singularity image using these commands
 
 ```
+alias UTILITIESgit=Path2thisRepo
 cd $UTILITIESgit
 mkdir SIMG
 cd SIMG
 singularity pull shub://ISUGIFsingularity/utilities:1.0.1
+ln -s ISUGIFsingularity-utilities-master-1.0.1.simg  ISUGIFsingularity-utilities-master.simg
 ```
 
 ### Add Alias and PATH
