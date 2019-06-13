@@ -520,6 +520,90 @@ sub sequence_statistics{
 	# add final value to @n_values and @ng_values which will just be the shortest sequence
 #	$n_values[100] = $min;
 #	$ng_values[100] = $min;
+
+
+        ##################################################################################
+        #
+        # n90 values
+        #
+        # Includes N(x) values, NG(x) (using assumed genome size)
+        # and L(x) values (number of sequences larger than or equal to n90 sequence size)
+        ##################################################################################
+	# clear variables from N50
+
+
+        # keep track of cumulative assembly size (starting from smallest seq)
+        $running_total = 0;
+
+        # want to store all n90-style values from N1..N100. First target size to pass is N1
+        $n_index = 1;
+        @n_values = ();
+        my $n90_length = 0;
+
+        $i = 0;
+
+        $x = $total_size * 0.9;
+        # start with longest lengths scaffold/contig
+        foreach my $length (reverse sort{$a <=> $b} @{$data{$type}{lengths}}){
+                $i++;
+                $running_total += $length;
+
+                # check the current sequence and all sequences shorter than current one
+                # to see if they exceed the current NX value
+                while($running_total > int (($n_index / 100) * $total_size)){
+                        if ($n_index == 90){
+                                $n90_length = $length;
+                                $desc = "n90 $type length";
+                                printf "%${w}s %10d\n", $desc, $length;
+                                store_results($desc, $length) if ($csv);
+
+                                # L90 = number of scaffolds/contigs that are longer than or equal to the n90 size
+                                $desc = "L90 $type count";
+                                printf "%${w}s %10d\n","L90 $type count", $i;
+                                store_results($desc, $i) if ($csv);
+                        }
+                        $n_values[$n_index] = $length;
+                        $n_index++;
+                }
+        }
+
+
+        # do we have an estimated/known genome size to work with?
+        if(defined($genome_size)){
+                my $ng_index = 1;
+                my $ng90_length = 0;
+
+                $running_total = 0;
+                $i = 0;
+
+                foreach my $length (reverse sort{$a <=> $b} @{$data{$type}{lengths}}){
+                        $i++;
+                        $running_total += $length;
+
+                        # now do the same for NG values, using assumed genome size
+                        while($running_total > int (($ng_index / 100) * $genome_size)){
+                                if ($ng_index == 90){
+                                        $ng90_length = $length;
+                                        $desc = "ng90 $type length";
+                                        printf "%${w}s %10d\n", $desc, $length;
+                                        store_results($desc, $length) if ($csv);
+
+                                        $desc = "LG50 $type count";
+                                        printf "%${w}s %10d\n", $desc, $i;
+                                        store_results($desc, $i) if ($csv);
+                                }
+                                $ng_values[$ng_index] = $length;
+                                $ng_index++;
+                        }
+                }
+
+
+                my $n90_diff = abs($ng90_length - $n90_length);
+                $desc = "n90 $type - ng90 $type length difference";
+                printf "%${w}s %10d\n", $desc, $n90_diff;
+                store_results($desc, $n90_diff) if ($csv);
+        }
+
 	
 
 	# base frequencies
